@@ -16,7 +16,7 @@ import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
 <SpinnerComponent loading={true} position={SpinnerPositionEnum.GLOBAL} />
 ```
 
-![global](https://github.com/fergomapv/react-element-spinner/blob/master/images/global.png)
+![global](https://raw.githubusercontent.com/fergomap/react-element-spinner/master/images//global.png)
 
 This code would create a spinner that blocks the form.
 
@@ -41,7 +41,7 @@ import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
 </button>
 ```
 
-![elements](https://github.com/fergomapv/react-element-spinner/blob/master/images/elements.png)
+![elements](https://raw.githubusercontent.com/fergomap/react-element-spinner/master/images/elements.png)
 
 ## Properties
 
