@@ -1,0 +1,67 @@
+{
+  "name": "react-element-spinner",
+  "version": "1.0.0",
+  "description": "An npm package that provides a spinner to block elements.",
+  "main": "build/index.js",
+  "module": "build/index.es.js",
+  "jsnext:main": "build/index.es.js",
+  "files": [
+    "build"
+  ],
+  "repository": "git://github.com/fergomap/react-element-spinner.git",
+  "homepage": "https://github.com/fergomap/react-element-spinner",
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -c --watch",
+    "lint": "eslint -c .eslintrc.json src --ext .tsx",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "npm run test -- --coverage"
+  },
+  "keywords": [
+    "react",
+    "loader",
+    "loading",
+    "spinner",
+    "overlay",
+    "block"
+  ],
+  "author": "https://github.com/fergomap",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
+    "@types/enzyme": "^3.10.4",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.24",
+    "@types/node-sass": "^4.11.0",
+    "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/parser": "^2.15.0",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-dynamic-import-node": "^2.3.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0",
+    "node-sass": "^4.13.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "rollup": "^1.27.14",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "typescript": "^3.7.4"
+  }
+}

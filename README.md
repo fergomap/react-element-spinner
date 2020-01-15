@@ -1,0 +1,67 @@
+# React element spinner
+
+A customizable loading spinner for React that overlays divs and blocks buttons.
+
+## Demo
+
+There is a demo with some examples [here](https://fergomap.github.io/react-element-spinner/).
+
+## Quick start
+
+This code would create a global spinner, it would block all the page.
+
+```typescript
+import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
+
+<SpinnerComponent loading={true} position={SpinnerPositionEnum.GLOBAL} />
+```
+
+![global](https://github.com/fergomapv/react-element-spinner/blob/master/images/global.png)
+
+This code would create a spinner that blocks the form.
+
+```typescript
+import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
+
+<form>
+    <SpinnerComponent loading={true} position={SpinnerPositionEnum.CENTERED} />
+    <input type="text" name="address"/>
+    <button>SAVE</button>
+</form>
+```
+
+This code would create a spinner that blocks the button.
+
+```typescript
+import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
+
+<button>
+  Button
+  <SpinnerComponent loading={true} position={SpinnerPositionEnum.INLINE} color="#498DFF"/>
+</button>
+```
+
+![elements](https://github.com/fergomapv/react-element-spinner/blob/master/images/elements.png)
+
+## Properties
+
+| Name | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| loading | boolean | true | - | Whether the spinner has to be shown or not. |
+| position | SpinnerPositionEnum | true | - | Position of the spinner: **GLOBAL** for all the page, **CENTERED** to overlay a div and **INLINE** to be next to the content (for example a button). |
+| color | string | false | #3578e5 | Color of the spinner |
+| secondaryColor | string | false | #f3f3f3 | Secondary color of the default spinner. |
+| backgroundColor | string | false | #d3d3d3 | Color of the background div (only for **CENTERED** and **GLOBAL**). |
+| resize | boolean | false | false | Whether to resize the overlay div or not when dimensions change (only for **CENTERED**). |
+| spinnerType | SpinnerTypeEnum | false | DEFAULT | Choose one of the three available spinners: **DEFAULT**, **CIRCLE_DOTS** or **CIRCLE_DOTS_COLLAPSE**. |
+| customSpinner | ReactElement | false | undefined | Custom spinner to use instead of the default ones. |
+
+## Custom styling
+
+The spinner component is easily customizable by overriding its css classes.
+
+| Class | Element |
+| --- | --- |
+| loader-container | The main div. |
+| loader | The spinner div. |
+| background | The background div. |
