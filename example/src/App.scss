@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, Tahoma, "Bitstream Vera Sans", sans-serif;
+}
+
+button {
+  color: #ffffff;
+  background-color: #3578E5;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  font-weight: 700;
+  margin-right: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  height: fit-content;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:focus {
+  outline:0;
+}
+
+@media (max-width: 575px) {
+  button {
+    width: 100% !important;
+  }
+
+  .hidden-mobile {
+    display: none;
+  }
+
+  .button-container {
+    display: block !important;
+  }
+}
+
+p {
+  text-align: justify;
+}
+
+.button-container {
+  display: flex;
+}
+
+.big-button {
+  width: 300px;
+  max-width: 100%;
+  min-height: 50px;
+  font-size: 30px;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+form {
+  border: solid 1px lightgray;
+  padding: 10px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+
+  label, input, button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  input {
+    padding: 5px;
+    font-size: 14px;
+    width: auto;
+    border: solid 1px lightgray;
+    border-radius: 3px;
+  }
+}
