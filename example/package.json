@@ -1,6 +1,6 @@
 {
-  "name": "example",
-  "homepage": "https://fergomap.github.com/react-element-spinner",
+  "name": "react-element-spinner",
+  "homepage": "https://github.com/fergomap/react-element-spinner",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
