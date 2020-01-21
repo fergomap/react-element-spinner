@@ -4,7 +4,7 @@ A customizable loading spinner for React that overlays divs and blocks buttons.
 
 ## Demo
 
-There is a demo with some examples [here](https://fergomap.github.io/react-element-spinner/).
+There is a demo with some examples [here](https://fergomap.github.io/react-element-spinner-demo/).
 
 ## Quick start
 
