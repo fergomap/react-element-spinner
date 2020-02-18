@@ -4,8 +4,6 @@ import SpinnerComponentProps from './model/spinner.component.props';
 import {mount} from 'enzyme';
 import * as spinnerService from './services/spinner.service';
 import {mockSpinnerService} from './services/spinner.service.mock';
-import {SpinnerPositionEnum} from './model/position.enum';
-import {SpinnerTypeEnum} from './model/type.enum';
 import {SPINNER_CONSTANTS} from "./config/spinner.config";
 
 describe('SpinnerComponent', () => {
@@ -19,7 +17,7 @@ describe('SpinnerComponent', () => {
             expect(mount(<SpinnerComponent {...getProps()}/>)).toBeTruthy();
         });
 
-        it('should render a background with the default backgroundColor but not a hidden div when position is not INLINE and loading is true', () => {
+        it('should render a background with the default backgroundColor but not a hidden div when position is not inline and loading is true', () => {
             const wrapper = mount(<SpinnerComponent {...getProps()}/>);
 
             expect(wrapper.find('.hidden').length).toEqual(0);
@@ -27,7 +25,7 @@ describe('SpinnerComponent', () => {
             expect((wrapper.find('.background').prop('style') as any).backgroundColor).toEqual(SPINNER_CONSTANTS.DEFAULT_COLORS.BACKGROUND);
         });
 
-        it('should render a background with the passed backgroundColor but not a hidden div when position is not INLINE and loading is true', () => {
+        it('should render a background with the passed backgroundColor but not a hidden div when position is not inline and loading is true', () => {
             const props = getProps();
             props.backgroundColor = 'red';
             const wrapper = mount(<SpinnerComponent {...props}/>);
@@ -37,10 +35,10 @@ describe('SpinnerComponent', () => {
             expect((wrapper.find('.background').prop('style') as any).backgroundColor).toEqual('red');
         });
 
-        it('should render a hidden but not a background div when position is INLINE and loading is false', () => {
+        it('should render a hidden but not a background div when position is inline and loading is false', () => {
             const props = getProps();
             props.loading = false;
-            props.position = SpinnerPositionEnum.INLINE;
+            props.position = 'inline';
             const wrapper = mount(<SpinnerComponent {...props}/>);
 
             expect(wrapper.find('.hidden').length).toEqual(1);
@@ -60,7 +58,7 @@ describe('SpinnerComponent', () => {
             expect(addEventListenerSpy).not.toHaveBeenCalled();
         });
 
-        it('should not call to window.addEventListener when resize is true but position is not CENTERED', () => {
+        it('should not call to window.addEventListener when resize is true but position is not centered', () => {
             const props = getProps();
             props.resize = true;
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
@@ -71,10 +69,10 @@ describe('SpinnerComponent', () => {
             expect(addEventListenerSpy).not.toHaveBeenCalled();
         });
 
-        it('should call to window.addEventListener when resize is true and position is CENTERED', () => {
+        it('should call to window.addEventListener when resize is true and position is centered', () => {
             const props = getProps();
             props.resize = true;
-            props.position = SpinnerPositionEnum.CENTERED;
+            props.position = 'centered';
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
             const addEventListenerSpy = spyOn(window, 'addEventListener');
 
@@ -105,7 +103,7 @@ describe('SpinnerComponent', () => {
             expect(removeEventListenerSpy).not.toHaveBeenCalled();
         });
 
-        it('should not call to window.removeEventListener when resize is true but position is not CENTERED', () => {
+        it('should not call to window.removeEventListener when resize is true but position is not centered', () => {
             const props = getProps();
             props.resize = true;
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
@@ -116,10 +114,10 @@ describe('SpinnerComponent', () => {
             expect(removeEventListenerSpy).not.toHaveBeenCalled();
         });
 
-        it('should call to window.removeEventListener when resize is true and position is CENTERED', () => {
+        it('should call to window.removeEventListener when resize is true and position is centered', () => {
             const props = getProps();
             props.resize = true;
-            props.position = SpinnerPositionEnum.CENTERED;
+            props.position = 'centered';
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
             const removeEventListenerSpy = spyOn(window, 'removeEventListener');
 
@@ -148,7 +146,7 @@ describe('SpinnerComponent', () => {
 
         it('should not call to parsePixelsToNumber when the spinner position is inline and custom', () => {
             const props = getProps();
-            props.position = SpinnerPositionEnum.INLINE;
+            props.position = 'inline';
             props.customSpinner = <div/>;
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
             instance.ref = getRef();
@@ -158,9 +156,9 @@ describe('SpinnerComponent', () => {
             expect(spinnerService.parsePixelsToNumber).not.toHaveBeenCalled();
         });
 
-        it('should call to parsePixelsToNumber and set the current style and firstChild height and width according to the width when position is CENTERED, isDefault and the parent width is smaller or equal than the height', () => {
+        it('should call to parsePixelsToNumber and set the current style and firstChild height and width according to the width when position is centered, isDefault and the parent width is smaller or equal than the height', () => {
             const props = getProps();
-            props.position = SpinnerPositionEnum.CENTERED;
+            props.position = 'centered';
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
             const ref = getRef();
             instance.ref = ref;
@@ -173,9 +171,9 @@ describe('SpinnerComponent', () => {
             expect(ref.current.firstChild.style.height).toEqual('2px');
         });
 
-        it('should call to parsePixelsToNumber and set the current style and firstChild height and width according to the height when position is CENTERED, isDefault and the parent height is smaller or equal than the width', () => {
+        it('should call to parsePixelsToNumber and set the current style and firstChild height and width according to the height when position is centered, isDefault and the parent height is smaller or equal than the width', () => {
             const props = getProps();
-            props.position = SpinnerPositionEnum.CENTERED;
+            props.position = 'centered';
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
             const ref = getRef();
             ref.current.parentNode.clientHeight = 20;
@@ -190,9 +188,9 @@ describe('SpinnerComponent', () => {
             expect(ref.current.firstChild.style.height).toEqual('4px');
         });
 
-        it('should call to parsePixelsToNumber and to getCenteredSpinnerFontSize when position is CENTERED and isDefault is false', () => {
+        it('should call to parsePixelsToNumber and to getCenteredSpinnerFontSize when position is centered and isDefault is false', () => {
             const props = getProps();
-            props.position = SpinnerPositionEnum.CENTERED;
+            props.position = 'centered';
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
             instance.ref = getRef();
             (spinnerService.isDefaultSpinner as jest.Mock).mockReturnValue(false);
@@ -204,9 +202,9 @@ describe('SpinnerComponent', () => {
             expect(spinnerService.getCenteredSpinnerFontSize).toHaveBeenCalled();
         });
 
-        it('should call to parsePixelsToNumber and to getSpinnerFontSizeAspectRatio when position is INLINE and custom is undefined', () => {
+        it('should call to parsePixelsToNumber and to getSpinnerFontSizeAspectRatio when position is inline and custom is undefined', () => {
             const props = getProps();
-            props.position = SpinnerPositionEnum.INLINE;
+            props.position = 'inline';
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
             instance.ref = getRef();
 
@@ -228,20 +226,20 @@ describe('SpinnerComponent', () => {
 
         it('should return a div with the spinner type as class and the color style with the default white when isDefaultSpinner returns false and customSpinner and color are not defined', () => {
             const props = getProps();
-            props.spinnerType = SpinnerTypeEnum.CIRCLE_DOTS;
+            props.spinnerType = 'circle-dots';
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
 
             (spinnerService.isDefaultSpinner as jest.Mock).mockReturnValue(false);
 
             const wrapper = mount(instance.getContent());
 
-            expect(wrapper.find('.' + SpinnerTypeEnum.CIRCLE_DOTS).length).toEqual(1);
+            expect(wrapper.find('.' + 'circle-dots').length).toEqual(1);
             expect((wrapper.prop('style') as any).color).toContain(SPINNER_CONSTANTS.DEFAULT_COLORS.WHITE);
         });
 
         it('should return a div with the spinner type as class and the color style with the passed color when isDefaultSpinner returns false and customSpinner and color is', () => {
             const props = getProps();
-            props.spinnerType = SpinnerTypeEnum.CIRCLE_DOTS;
+            props.spinnerType = 'circle-dots';
             props.color = 'red';
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
 
@@ -249,7 +247,7 @@ describe('SpinnerComponent', () => {
 
             const wrapper = mount(instance.getContent());
 
-            expect(wrapper.find('.' + SpinnerTypeEnum.CIRCLE_DOTS).length).toEqual(1);
+            expect(wrapper.find('.' + 'circle-dots').length).toEqual(1);
             expect((wrapper.prop('style') as any).color).toContain('red');
         });
 
@@ -259,7 +257,7 @@ describe('SpinnerComponent', () => {
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
             const wrapper = mount(instance.getContent());
 
-            expect(wrapper.find('.' + SpinnerTypeEnum.DEFAULT).length).toEqual(1);
+            expect(wrapper.find('.' + 'default').length).toEqual(1);
             expect((wrapper.prop('style') as any).borderTop).toContain(SPINNER_CONSTANTS.DEFAULT_COLORS.BLUE);
             expect((wrapper.prop('style') as any).border).toContain(SPINNER_CONSTANTS.DEFAULT_COLORS.SECONDARY);
         });
@@ -273,7 +271,7 @@ describe('SpinnerComponent', () => {
             const instance = mount(<SpinnerComponent {...props}/>).instance() as any;
             const wrapper = mount(instance.getContent());
 
-            expect(wrapper.find('.' + SpinnerTypeEnum.DEFAULT).length).toEqual(1);
+            expect(wrapper.find('.' + 'default').length).toEqual(1);
             expect((wrapper.prop('style') as any).borderTop).toContain('red');
             expect((wrapper.prop('style') as any).border).toContain('red');
         });
@@ -282,9 +280,9 @@ describe('SpinnerComponent', () => {
 
 const getProps = (): SpinnerComponentProps => ({
     loading: true,
-    position: SpinnerPositionEnum.GLOBAL,
+    position: 'global',
     resize: false,
-    spinnerType: SpinnerTypeEnum.DEFAULT
+    spinnerType: 'default'
 });
 
 const getRef = (): any => ({

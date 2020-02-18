@@ -45,25 +45,11 @@ const SPINNER_CONSTANTS = {
     }
 };
 
-// istanbul ignore file
-(function (SpinnerPositionEnum) {
-    SpinnerPositionEnum["INLINE"] = "inline";
-    SpinnerPositionEnum["GLOBAL"] = "global";
-    SpinnerPositionEnum["CENTERED"] = "centered";
-})(exports.SpinnerPositionEnum || (exports.SpinnerPositionEnum = {}));
-
-// istanbul ignore file
-(function (SpinnerTypeEnum) {
-    SpinnerTypeEnum["DEFAULT"] = "default";
-    SpinnerTypeEnum["CIRCLE_DOTS"] = "circle-dots";
-    SpinnerTypeEnum["CIRCLE_DOTS_COLLAPSE"] = "circle-dots-collapse";
-})(exports.SpinnerTypeEnum || (exports.SpinnerTypeEnum = {}));
-
 const getSpinnerFontSizeAspectRatio = (spinnerType) => {
     switch (spinnerType) {
-        case exports.SpinnerTypeEnum.CIRCLE_DOTS:
+        case 'circle-dots':
             return SPINNER_CONSTANTS.ASPECT_RATIO.CIRCLE_DOTS;
-        case exports.SpinnerTypeEnum.CIRCLE_DOTS_COLLAPSE:
+        case 'circle-dots-collapse':
             return SPINNER_CONSTANTS.ASPECT_RATIO.CIRCLE_DOTS_COLLAPSE;
         default:
             return 0;
@@ -71,16 +57,16 @@ const getSpinnerFontSizeAspectRatio = (spinnerType) => {
 };
 const getCenteredSpinnerFontSize = (referenceSize, spinnerType) => {
     switch (spinnerType) {
-        case exports.SpinnerTypeEnum.CIRCLE_DOTS:
+        case 'circle-dots':
             return referenceSize > SPINNER_CONSTANTS.FONT_SIZE.CIRCLE_DOTS ? SPINNER_CONSTANTS.FONT_SIZE.CIRCLE_DOTS : referenceSize;
-        case exports.SpinnerTypeEnum.CIRCLE_DOTS_COLLAPSE:
+        case 'circle-dots-collapse':
             return referenceSize > SPINNER_CONSTANTS.FONT_SIZE.CIRCLE_DOTS_COLLAPSE ? SPINNER_CONSTANTS.FONT_SIZE.CIRCLE_DOTS_COLLAPSE : referenceSize;
         default:
             return 0;
     }
 };
 const isDefaultSpinner = (spinnerType) => {
-    return !spinnerType || spinnerType === exports.SpinnerTypeEnum.DEFAULT;
+    return !spinnerType || spinnerType === 'default';
 };
 const parsePixelsToNumber = (pixels) => {
     return parseInt(pixels.replace('px', ''));
@@ -95,7 +81,7 @@ class SpinnerComponent extends React.Component {
     }
     componentDidMount() {
         this.setUpSpinner();
-        if (this.props.resize && this.props.position === exports.SpinnerPositionEnum.CENTERED) {
+        if (this.props.resize && this.props.position === 'centered') {
             window.addEventListener('resize', this.setUpSpinner);
         }
     }
@@ -103,14 +89,14 @@ class SpinnerComponent extends React.Component {
         this.setUpSpinner();
     }
     componentWillUnmount() {
-        if (this.props.resize && this.props.position === exports.SpinnerPositionEnum.CENTERED) {
+        if (this.props.resize && this.props.position === 'centered') {
             window.removeEventListener('resize', this.setUpSpinner);
         }
     }
     setUpSpinner() {
         this.ref.current.parentNode.disabled = this.props.loading;
         const parentComputedStyle = window.getComputedStyle(this.ref.current.parentNode);
-        if (this.props.position === exports.SpinnerPositionEnum.CENTERED) {
+        if (this.props.position === 'centered') {
             const borderWidth = parsePixelsToNumber(parentComputedStyle.getPropertyValue('border-bottom-width'));
             const referenceSize = this.ref.current.parentNode.clientHeight > this.ref.current.parentNode.clientWidth ? this.ref.current.parentNode.clientWidth : this.ref.current.parentNode.clientHeight;
             if (isDefaultSpinner(this.props.spinnerType)) {
@@ -126,7 +112,7 @@ class SpinnerComponent extends React.Component {
             this.ref.current.style.width = (this.ref.current.parentNode.clientWidth + borderWidth) + 'px';
             this.ref.current.style.height = (this.ref.current.parentNode.clientHeight + borderWidth) + 'px';
         }
-        else if (this.props.position === exports.SpinnerPositionEnum.INLINE && !this.props.customSpinner) {
+        else if (this.props.position === 'inline' && !this.props.customSpinner) {
             const fontSize = parentComputedStyle.getPropertyValue('font-size');
             const fontSizeNumber = parsePixelsToNumber(fontSize);
             this.ref.current.style.marginLeft = '5px';
@@ -145,11 +131,11 @@ class SpinnerComponent extends React.Component {
             const contentStyle = isDefaultSpinner(this.props.spinnerType) ?
                 { border: 'solid 3px ' + (this.props.secondaryColor || SPINNER_CONSTANTS.DEFAULT_COLORS.SECONDARY), borderTop: 'solid 3px ' + (this.props.color || SPINNER_CONSTANTS.DEFAULT_COLORS.BLUE) } :
                 { color: this.props.color || SPINNER_CONSTANTS.DEFAULT_COLORS.WHITE };
-            return React.createElement("div", { className: `loader ${this.props.spinnerType || exports.SpinnerTypeEnum.DEFAULT}`, style: contentStyle });
+            return React.createElement("div", { className: `loader ${this.props.spinnerType || 'default'}`, style: contentStyle });
         }
     }
     render() {
-        const background = this.props.position !== exports.SpinnerPositionEnum.INLINE && React.createElement("div", { className: "background", style: { backgroundColor: this.props.backgroundColor || SPINNER_CONSTANTS.DEFAULT_COLORS.BACKGROUND } });
+        const background = this.props.position !== 'inline' && React.createElement("div", { className: "background", style: { backgroundColor: this.props.backgroundColor || SPINNER_CONSTANTS.DEFAULT_COLORS.BACKGROUND } });
         return React.createElement("div", { ref: this.ref, className: `loader-container ${this.props.loading ? '' : 'hidden'} ${this.props.position}` },
             this.getContent(),
             background);

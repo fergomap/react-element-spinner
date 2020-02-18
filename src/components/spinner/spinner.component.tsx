@@ -2,9 +2,7 @@ import React, {ReactElement} from 'react';
 import './spinner.component.scss';
 import SpinnerComponentProps from './model/spinner.component.props';
 import {SPINNER_CONSTANTS} from './config/spinner.config';
-import {SpinnerPositionEnum} from './model/position.enum';
 import {getCenteredSpinnerFontSize, getSpinnerFontSizeAspectRatio, isDefaultSpinner, parsePixelsToNumber} from './services/spinner.service';
-import {SpinnerTypeEnum} from './model/type.enum';
 
 class SpinnerComponent extends React.Component<SpinnerComponentProps, {}> {
 
@@ -19,7 +17,7 @@ class SpinnerComponent extends React.Component<SpinnerComponentProps, {}> {
 
     componentDidMount(): void {
         this.setUpSpinner();
-        if (this.props.resize && this.props.position === SpinnerPositionEnum.CENTERED) {
+        if (this.props.resize && this.props.position === 'centered') {
             window.addEventListener('resize', this.setUpSpinner);
         }
     }
@@ -29,7 +27,7 @@ class SpinnerComponent extends React.Component<SpinnerComponentProps, {}> {
     }
 
     componentWillUnmount(): void {
-        if (this.props.resize && this.props.position === SpinnerPositionEnum.CENTERED) {
+        if (this.props.resize && this.props.position === 'centered') {
             window.removeEventListener('resize', this.setUpSpinner);
         }
     }
@@ -38,7 +36,7 @@ class SpinnerComponent extends React.Component<SpinnerComponentProps, {}> {
         this.ref.current.parentNode.disabled = this.props.loading;
         const parentComputedStyle = window.getComputedStyle(this.ref.current.parentNode);
 
-        if (this.props.position === SpinnerPositionEnum.CENTERED) {
+        if (this.props.position === 'centered') {
             const borderWidth = parsePixelsToNumber(parentComputedStyle.getPropertyValue('border-bottom-width'));
             const referenceSize = this.ref.current.parentNode.clientHeight > this.ref.current.parentNode.clientWidth ? this.ref.current.parentNode.clientWidth : this.ref.current.parentNode.clientHeight;
 
@@ -54,7 +52,7 @@ class SpinnerComponent extends React.Component<SpinnerComponentProps, {}> {
             this.ref.current.style.marginLeft = '-' + parentComputedStyle.getPropertyValue('padding-left');
             this.ref.current.style.width = (this.ref.current.parentNode.clientWidth + borderWidth) + 'px';
             this.ref.current.style.height = (this.ref.current.parentNode.clientHeight + borderWidth) + 'px';
-        } else if (this.props.position === SpinnerPositionEnum.INLINE && !this.props.customSpinner) {
+        } else if (this.props.position === 'inline' && !this.props.customSpinner) {
             const fontSize = parentComputedStyle.getPropertyValue('font-size');
             const fontSizeNumber = parsePixelsToNumber(fontSize);
             this.ref.current.style.marginLeft = '5px';
@@ -73,12 +71,12 @@ class SpinnerComponent extends React.Component<SpinnerComponentProps, {}> {
             const contentStyle = isDefaultSpinner(this.props.spinnerType) ?
                 { border: 'solid 3px ' + (this.props.secondaryColor || SPINNER_CONSTANTS.DEFAULT_COLORS.SECONDARY), borderTop: 'solid 3px ' + (this.props.color || SPINNER_CONSTANTS.DEFAULT_COLORS.BLUE) } :
                 { color: this.props.color || SPINNER_CONSTANTS.DEFAULT_COLORS.WHITE };
-            return <div className={`loader ${this.props.spinnerType || SpinnerTypeEnum.DEFAULT}`} style={contentStyle}/>;
+            return <div className={`loader ${this.props.spinnerType || 'default'}`} style={contentStyle}/>;
         }
     }
 
     render(): ReactElement {
-        const background = this.props.position !== SpinnerPositionEnum.INLINE && <div className="background" style={{backgroundColor: this.props.backgroundColor || SPINNER_CONSTANTS.DEFAULT_COLORS.BACKGROUND}}/>;
+        const background = this.props.position !== 'inline' && <div className="background" style={{backgroundColor: this.props.backgroundColor || SPINNER_CONSTANTS.DEFAULT_COLORS.BACKGROUND}}/>;
 
         return <div ref={this.ref} className={`loader-container ${this.props.loading ? '' : 'hidden'} ${this.props.position}`}>
                 { this.getContent() }

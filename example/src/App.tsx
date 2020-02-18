@@ -1,5 +1,5 @@
 import React, {Component, FormEvent, ReactElement} from 'react';
-import { SpinnerComponent, SpinnerPositionEnum, SpinnerTypeEnum } from 'react-element-spinner';
+import { SpinnerComponent } from 'react-element-spinner';
 import './App.scss';
 import {CustomSpinner} from './components/custom-spinner/custom-spinner.component';
 
@@ -35,7 +35,7 @@ export default class App extends Component<any, any> {
         <h1>React element spinner demo</h1>
       </div>
       <div className="margin-bottom button-container">
-        <SpinnerComponent loading={this.state.globalLoading} position={SpinnerPositionEnum.GLOBAL} />
+        <SpinnerComponent loading={this.state.globalLoading} position="global" />
         <button onClick={this.loadGlobal} className="margin-bottom">
           {this.state.globalLoading ? 'SHOWING GLOBAL SPINNER...' : 'SHOW GLOBAL SPINNER'}
         </button>
@@ -48,29 +48,29 @@ export default class App extends Component<any, any> {
         <div className="button-container">
           <button>
             Button default spinner
-            <SpinnerComponent loading={this.state.loading} position={SpinnerPositionEnum.INLINE} color="#498DFF"/>
+            <SpinnerComponent loading={this.state.loading} position="inline" color="#498DFF"/>
           </button>
           <button>
             Button dots spinner
-            <SpinnerComponent loading={this.state.loading} position={SpinnerPositionEnum.INLINE} spinnerType={SpinnerTypeEnum.CIRCLE_DOTS}/>
+            <SpinnerComponent loading={this.state.loading} position="inline" spinnerType="circle-dots"/>
           </button>
           <button>
             Button dots collapse spinner
-            <SpinnerComponent loading={this.state.loading} position={SpinnerPositionEnum.INLINE} spinnerType={SpinnerTypeEnum.CIRCLE_DOTS_COLLAPSE}/>
+            <SpinnerComponent loading={this.state.loading} position="inline" spinnerType="circle-dots-collapse"/>
           </button>
           <button>
             Button custom spinner
-            <SpinnerComponent loading={this.state.loading} position={SpinnerPositionEnum.INLINE} customSpinner={<CustomSpinner/>}/>
+            <SpinnerComponent loading={this.state.loading} position="inline" customSpinner={<CustomSpinner/>}/>
           </button>
           <button className="big-button">
             Big button
-            <SpinnerComponent loading={this.state.loading} position={SpinnerPositionEnum.INLINE} spinnerType={SpinnerTypeEnum.CIRCLE_DOTS}/>
+            <SpinnerComponent loading={this.state.loading} position="inline" spinnerType="circle-dots"/>
           </button>
         </div>
       </div>
 
       <div>
-        <SpinnerComponent loading={this.state.loading} position={SpinnerPositionEnum.CENTERED} color="#FF1493" secondaryColor="pink" backgroundColor="black" resize={true}/>
+        <SpinnerComponent loading={this.state.loading} position="centered" color="#FF1493" secondaryColor="pink" backgroundColor="black" resize={true}/>
         <h4>Div with resizable default spinner with custom colors</h4>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
         <p className="hidden-mobile">Expetenda tincidunt in sed, ex partem placerat sea, porro commodo ex eam. His putant aeterno interesset at. Usu ea mundi tincidunt, omnium virtute aliquando ius ex. Ea aperiri sententiae duo. Usu nullam dolorum quaestio ei, sit vidit facilisis ea. Per ne impedit iracundia neglegentur. Consetetur neglegentur eum ut, vis animal legimus inimicus id.</p>
@@ -78,7 +78,7 @@ export default class App extends Component<any, any> {
         <p className="hidden-mobile">Expetenda tincidunt in sed, ex partem placerat sea, porro commodo ex eam. His putant aeterno interesset at. Usu ea mundi tincidunt, omnium virtute aliquando ius ex. Ea aperiri sententiae duo. Usu nullam dolorum quaestio ei, sit vidit facilisis ea. Per ne impedit iracundia neglegentur. Consetetur neglegentur eum ut, vis animal legimus inimicus id.</p>
       </div>
       <form noValidate={true} onSubmit={this.onSubmit}>
-        <SpinnerComponent loading={this.state.isSubmitting} position={SpinnerPositionEnum.CENTERED} customSpinner={<CustomSpinner/>}/>
+        <SpinnerComponent loading={this.state.isSubmitting} position="centered" customSpinner={<CustomSpinner/>}/>
         <h4>Form with custom spinner</h4>
         <label>Name</label>
         <input type="text" placeholder="Name"/>

@@ -12,9 +12,9 @@ The repo with the code is [this one](https://github.com/fergomap/react-element-s
 This code would create a global spinner, it would block all the page.
 
 ```typescript
-import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
+import { SpinnerComponent } from 'react-element-spinner';
 
-<SpinnerComponent loading={true} position={SpinnerPositionEnum.GLOBAL} />
+<SpinnerComponent loading={true} position="global" />
 ```
 
 ![global](https://raw.githubusercontent.com/fergomap/react-element-spinner/master/images//global.png)
@@ -22,10 +22,10 @@ import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
 This code would create a spinner that blocks the form.
 
 ```typescript
-import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
+import { SpinnerComponent } from 'react-element-spinner';
 
 <form>
-    <SpinnerComponent loading={true} position={SpinnerPositionEnum.CENTERED} />
+    <SpinnerComponent loading={true} position="centered" />
     <input type="text" name="address"/>
     <button>SAVE</button>
 </form>
@@ -34,11 +34,11 @@ import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
 This code would create a spinner that blocks the button.
 
 ```typescript
-import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
+import { SpinnerComponent } from 'react-element-spinner';
 
 <button>
   Button
-  <SpinnerComponent loading={true} position={SpinnerPositionEnum.INLINE} color="#498DFF"/>
+  <SpinnerComponent loading={true} position="inline" color="#498DFF"/>
 </button>
 ```
 
@@ -49,12 +49,12 @@ import { SpinnerComponent, SpinnerPositionEnum } from 'react-element-spinner';
 | Name | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | loading | boolean | true | - | Whether the spinner has to be shown or not. |
-| position | SpinnerPositionEnum | true | - | Position of the spinner: **GLOBAL** for all the page, **CENTERED** to overlay a div and **INLINE** to be next to the content (for example a button). |
+| position | string | true | - | Position of the spinner: **"global"** for all the page, **"centered"** to overlay a div and **"inline"** to be next to the content (for example a button). |
 | color | string | false | #3578e5 | Color of the spinner |
 | secondaryColor | string | false | #f3f3f3 | Secondary color of the default spinner. |
-| backgroundColor | string | false | #d3d3d3 | Color of the background div (only for **CENTERED** and **GLOBAL**). |
-| resize | boolean | false | false | Whether to resize the overlay div or not when dimensions change (only for **CENTERED**). |
-| spinnerType | SpinnerTypeEnum | false | DEFAULT | Choose one of the three available spinners: **DEFAULT**, **CIRCLE_DOTS** or **CIRCLE_DOTS_COLLAPSE**. |
+| backgroundColor | string | false | #d3d3d3 | Color of the background div (only for **"centered"** and **"global"**). |
+| resize | boolean | false | false | Whether to resize the overlay div or not when dimensions change (only for **"centered"**). |
+| spinnerType | string | false | "default" | Choose one of the three available spinners: **"default"**, **"circle-dots"** or **"circle-dots-collapse"**. |
 | customSpinner | ReactElement | false | undefined | Custom spinner to use instead of the default ones. |
 
 ## Custom styling
