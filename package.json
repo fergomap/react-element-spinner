@@ -1,6 +1,6 @@
 {
   "name": "react-element-spinner",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An npm package that provides a spinner to block elements.",
   "main": "build/index.js",
   "module": "build/index.es.js",
