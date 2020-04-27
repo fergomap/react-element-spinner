@@ -17,6 +17,14 @@ describe('SpinnerComponent', () => {
             expect(mount(<SpinnerComponent {...getProps()}/>)).toBeTruthy();
         });
 
+        it('should render a span when message is defined', () => {
+            const props = getProps();
+            props.message = 'Loading';
+            const wrapper = mount(<SpinnerComponent {...props}/>);
+
+            expect(wrapper.find('span').length).toEqual(1);
+        });
+
         it('should render a background with the default backgroundColor but not a hidden div when position is not inline and loading is true', () => {
             const wrapper = mount(<SpinnerComponent {...getProps()}/>);
 

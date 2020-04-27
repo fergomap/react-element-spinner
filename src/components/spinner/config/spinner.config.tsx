@@ -21,7 +21,7 @@ export const SPINNER_CONSTANTS: SpinnerConfig = {
     DEFAULT_COLORS: {
         BLUE: '#3578e5',
         WHITE: '#ffffff',
-        BACKGROUND: '#d3d3d3',
+        BACKGROUND: 'black',
         SECONDARY: '#f3f3f3'
     },
     FONT_SIZE: {

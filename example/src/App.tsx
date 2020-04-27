@@ -35,7 +35,7 @@ export default class App extends Component<any, any> {
         <h1>React element spinner demo</h1>
       </div>
       <div className="margin-bottom button-container">
-        <SpinnerComponent loading={this.state.globalLoading} position="global" />
+        <SpinnerComponent loading={this.state.globalLoading} position="global" message="Loading..." />
         <button onClick={this.loadGlobal} className="margin-bottom">
           {this.state.globalLoading ? 'SHOWING GLOBAL SPINNER...' : 'SHOW GLOBAL SPINNER'}
         </button>
@@ -70,7 +70,7 @@ export default class App extends Component<any, any> {
       </div>
 
       <div>
-        <SpinnerComponent loading={this.state.loading} position="centered" color="#FF1493" secondaryColor="pink" backgroundColor="black" resize={true}/>
+        <SpinnerComponent loading={this.state.loading} position="centered" message="Wait please" color="#FF1493" secondaryColor="pink" backgroundColor="black" resize={true}/>
         <h4>Div with resizable default spinner with custom colors</h4>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
         <p className="hidden-mobile">Expetenda tincidunt in sed, ex partem placerat sea, porro commodo ex eam. His putant aeterno interesset at. Usu ea mundi tincidunt, omnium virtute aliquando ius ex. Ea aperiri sententiae duo. Usu nullam dolorum quaestio ei, sit vidit facilisis ea. Per ne impedit iracundia neglegentur. Consetetur neglegentur eum ut, vis animal legimus inimicus id.</p>

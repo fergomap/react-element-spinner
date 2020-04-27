@@ -9,4 +9,5 @@ export default interface SpinnerComponentProps {
     customSpinner?: ReactElement;
     resize?: boolean;
     spinnerType?: 'default' | 'circle-dots' | 'circle-dots-collapse';
+    message?: string;
 }

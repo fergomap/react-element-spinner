@@ -2,6 +2,12 @@
     display: none !important;
 }
 
+span {
+    color: white;
+    margin-top: 10px;
+    z-index: 1;
+}
+
 .background {
     width: 100%;
     height: 100%;
@@ -24,6 +30,10 @@
     justify-content: center;
 }
 
+.loader-container.centered {
+    flex-direction: column;
+}
+
 .loader {
     z-index: 2;
 }
@@ -36,10 +46,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     z-index: 5;
 
     .loader.default {
-        position: absolute;
         width: 100px;
         height: 100px;
     }

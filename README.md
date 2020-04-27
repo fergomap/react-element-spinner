@@ -56,6 +56,7 @@ import { SpinnerComponent } from 'react-element-spinner';
 | resize | boolean | false | false | Whether to resize the overlay div or not when dimensions change (only for **"centered"**). |
 | spinnerType | string | false | "default" | Choose one of the three available spinners: **"default"**, **"circle-dots"** or **"circle-dots-collapse"**. |
 | customSpinner | ReactElement | false | undefined | Custom spinner to use instead of the default ones. |
+| message | string | false | undefined | Message to show under the spinner. |
 
 ## Custom styling
 
@@ -66,3 +67,4 @@ The spinner component is easily customizable by overriding its css classes.
 | loader-container | The main div. |
 | loader | The spinner div. |
 | background | The background div. |
+| span | The message. |
