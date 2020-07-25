@@ -81,7 +81,7 @@ class SpinnerComponent extends React.Component<SpinnerComponentProps, {}> {
         return <div ref={this.ref} className={`loader-container ${this.props.loading ? '' : 'hidden'} ${this.props.position}`}>
                 { this.getContent() }
                 { background }
-                { this.props.message && <span>{ this.props.message }</span> }
+                { this.props.message && <span className="message">{ this.props.message }</span> }
             </div>;
     }
 }
